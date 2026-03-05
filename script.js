@@ -322,3 +322,61 @@ if (typeText) {
   // Initial call after small delay
   setTimeout(type, newTextDelay);
 }
+
+/* =============================
+   TSPARTICLES BACKGROUND
+   ============================= */
+if (typeof tsParticles !== 'undefined') {
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
+    particles: {
+      number: { value: 40, density: { enable: true, area: 800 } },
+      color: { value: "#c8a96e" },
+      shape: { type: "circle" },
+      opacity: { value: 0.3 },
+      size: { value: { min: 1, max: 2 } },
+      links: {
+        enable: true,
+        distance: 150,
+        color: "#c8a96e",
+        opacity: 0.15,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 0.6,
+        direction: "none",
+        random: true,
+        straight: false,
+        outModes: "out"
+      }
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "grab" },
+        resize: true
+      },
+      modes: {
+        grab: { distance: 140, links: { opacity: 0.3 } }
+      }
+    },
+    retina_detect: true,
+    background: {
+      color: "transparent"
+    }
+  });
+
+  // Theme listener to adjust particle colors slightly
+  const observer = new MutationObserver(() => {
+    const pInst = tsParticles.domItem(0);
+    if (pInst) {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      pInst.options.particles.color.value = isDark ? "#c8a96e" : "#1e3050";
+      pInst.options.particles.links.color = isDark ? "#c8a96e" : "#1e3050";
+      pInst.options.particles.opacity.value = isDark ? 0.3 : 0.15;
+      pInst.options.particles.links.opacity = isDark ? 0.15 : 0.08;
+      pInst.refresh();
+    }
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+}

@@ -357,13 +357,23 @@ ul {
    HERO
    ============================= */
 #hero {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
   overflow: hidden;
-  padding-top: 68px;
-  background: var(--bg-primary);
+}
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-bg {

@@ -2127,6 +2127,13 @@ footer {
   font-style: italic;
 }
 
+@media (max-width: 650px) {
+  .pub-item {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+
 /* =============================
    SUPERVISION LIST
    ============================= */

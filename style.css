@@ -403,9 +403,26 @@ ul {
   height: 260px;
   border-radius: 50%;
   padding: 5px;
-  background: linear-gradient(135deg, var(--gold), var(--navy));
+  background: linear-gradient(135deg, var(--gold), var(--navy), var(--gold-dark), var(--navy-light));
+  background-size: 300% 300%;
   box-shadow: 0 20px 60px rgba(200, 169, 110, 0.25);
   position: relative;
+  /* Applying the spinning gradient animation */
+  animation: spinGradient 8s ease infinite;
+}
+
+@keyframes spinGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero-photo {
@@ -446,6 +463,20 @@ ul {
   border-radius: 20px;
   border: 2px solid var(--gold);
   box-shadow: var(--shadow);
+  /* Applying the floating/bobbing animation */
+  animation: floatBadge 4s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 [data-theme="dark"] .expert-badge {

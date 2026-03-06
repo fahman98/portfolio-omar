@@ -264,6 +264,25 @@ function updateScrollSpy() {
       link.classList.remove('active');
     }
   });
+
+  // Update mobile bottom tab bar links
+  const bottomNavLinks = document.querySelectorAll('.mobile-tab-bar .tab-item');
+  bottomNavLinks.forEach(link => {
+    const href = link.getAttribute('href')?.replace('#', '');
+    let isActive = false;
+
+    // Logic to map the many sections to the 4 bottom tabs
+    if (href === 'hero' && (!activeId || activeId === 'hero' || activeId === 'about')) isActive = true;
+    if (href === 'expertise' && (activeId === 'expertise' || activeId === 'impact' || activeId === 'roles')) isActive = true;
+    if (href === 'research' && (activeId === 'research' || activeId === 'publication' || activeId === 'supervision' || activeId === 'qualification' || activeId === 'awards')) isActive = true;
+    if (href === 'contact' && activeId === 'contact') isActive = true;
+
+    if (isActive) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
 }
 
 // Run on scroll and on load

@@ -2750,3 +2750,79 @@ footer {
   color: var(--gold);
   border-bottom-color: var(--gold);
 }
+
+/* =============================
+   MOBILE BOTTOM TAB BAR
+   ============================= */
+.mobile-tab-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom);
+  /* iOS support */
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.tab-item svg {
+  width: 22px;
+  height: 22px;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.tab-item.active,
+.tab-item:hover {
+  color: var(--gold-dark);
+}
+
+.tab-item.active svg,
+.tab-item:hover svg {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .mobile-tab-bar {
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .tab-item.active,
+[data-theme="dark"] .tab-item:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .mobile-tab-bar {
+    display: flex;
+  }
+
+  /* Create space at bottom so footer/content isn't covered */
+  body {
+    padding-bottom: 65px;
+  }
+
+  /* Hide the old "Back to top" button on mobile, it clashes with top bar */
+  #back-to-top {
+    display: none !important;
+  }
+}

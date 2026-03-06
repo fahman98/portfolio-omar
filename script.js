@@ -211,7 +211,7 @@ backToTopBtn.addEventListener('click', () => {
    ============================= */
 // All section IDs that have nav links
 const mainNavSections = ['about', 'expertise', 'roles', 'research', 'qualification'];
-const dropdownSections = ['publication', 'supervision', 'consultation', 'awards', 'contact'];
+const dropdownSections = ['publication', 'commercialisation', 'supervision', 'consultation', 'awards', 'membership', 'contact'];
 const allSpySections = [...mainNavSections, ...dropdownSections];
 
 const mainNavLinks = document.querySelectorAll('.nav-links > a');

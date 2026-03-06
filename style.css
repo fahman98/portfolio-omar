@@ -2838,9 +2838,10 @@ footer {
   border-radius: var(--radius-lg);
   padding: 2.5rem 3rem;
   box-shadow: var(--shadow);
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   transition: all var(--transition);
   max-width: 100%;
 }
@@ -2854,6 +2855,7 @@ footer {
 .premium-stat-value {
   display: flex;
   flex-direction: column;
+  align-items: center;
   line-height: 1;
   margin-bottom: 1.25rem;
 }

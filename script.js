@@ -399,3 +399,41 @@ if (typeof tsParticles !== 'undefined') {
   });
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 }
+
+/* =============================
+   ABOUT SECTION READ MORE
+   ============================= */
+const aboutReadMoreBtn = document.getElementById('about-read-more');
+const aboutExtra = document.getElementById('about-extra');
+
+if (aboutReadMoreBtn && aboutExtra) {
+  aboutReadMoreBtn.addEventListener('click', () => {
+    const isHidden = aboutExtra.style.display === 'none';
+    const currentLang = document.documentElement.getAttribute('data-lang') || 'en';
+    const btnSpan = aboutReadMoreBtn.querySelector('span');
+
+    if (isHidden) {
+      aboutExtra.style.display = 'block';
+      if (btnSpan) {
+        btnSpan.setAttribute('data-en', 'Show Less');
+        btnSpan.setAttribute('data-ms', 'Tutup');
+        btnSpan.textContent = currentLang === 'en' ? 'Show Less' : 'Tutup';
+      }
+    } else {
+      aboutExtra.style.display = 'none';
+      if (btnSpan) {
+        btnSpan.setAttribute('data-en', 'Read More');
+        btnSpan.setAttribute('data-ms', 'Baca Lanjut');
+        btnSpan.textContent = currentLang === 'en' ? 'Read More' : 'Baca Lanjut';
+      }
+
+      // Optionally scroll back to the top of the about section if it's long
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        const offset = 80;
+        const top = aboutSection.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  });
+}

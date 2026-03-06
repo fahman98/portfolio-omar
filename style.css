@@ -463,7 +463,8 @@ ul {
 .expert-badge {
   position: absolute;
   bottom: -15px;
-  right: 15px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--navy);
   color: var(--gold);
   font-size: 0.7rem;
@@ -481,11 +482,11 @@ ul {
 
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate(-50%, 0);
   }
 
   50% {
-    transform: translateY(-8px);
+    transform: translate(-50%, -8px);
   }
 }
 

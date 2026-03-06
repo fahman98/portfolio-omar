@@ -2854,8 +2854,10 @@ footer {
 
 .premium-stat-value {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5rem;
   line-height: 1;
   margin-bottom: 1.25rem;
 }

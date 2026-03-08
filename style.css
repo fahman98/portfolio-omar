@@ -2914,3 +2914,80 @@ footer {
     font-size: 2.2rem;
   }
 }
+/* =========================================
+   Academic Table Styling (Pengalaman Mengajar)
+   ========================================= */
+.table-responsive {
+  margin-top: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.table-responsive::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--gold-light);
+  border-radius: 10px;
+}
+
+.acad-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.acad-table th,
+.acad-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.acad-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--gold);
+  color: white;
+  font-weight: 600;
+  z-index: 10;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.acad-table tbody tr {
+  transition: background-color var(--transition);
+}
+
+.acad-table tbody tr:hover {
+  background-color: rgba(197, 160, 89, 0.05);
+  /* Slight gold tint */
+}
+
+.acad-table tbody td {
+  color: var(--text-secondary);
+}
+
+/* Subtle background for rowspan to distinguish semesters */
+.acad-table tbody td[rowspan] {
+  background-color: var(--bg-tertiary, rgba(0, 0, 0, 0.02));
+  font-weight: 600;
+  color: var(--text-primary);
+  border-right: 1px solid var(--border-color);
+  vertical-align: middle;
+  text-align: center;
+}
+
+[data-theme="dark"] .acad-table tbody td[rowspan] {
+  background-color: rgba(255, 255, 255, 0.02);
+}

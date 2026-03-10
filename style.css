@@ -2856,10 +2856,10 @@ footer {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-    white-space: nowrap;
+  white-space: nowrap;
   justify-content: center;
-    align-items: baseline;
-    gap: 0.5rem;
+  align-items: baseline;
+  gap: 0.5rem;
   line-height: 1;
   margin-bottom: 1.25rem;
 }
@@ -2914,6 +2914,7 @@ footer {
     font-size: 2.2rem;
   }
 }
+
 /* =========================================
    Academic Table Styling (Pengalaman Mengajar)
    ========================================= */
@@ -3046,6 +3047,7 @@ footer {
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -3110,42 +3112,93 @@ footer {
    #10 — PRINT-FRIENDLY CSS
    ============================= */
 @media print {
+
   /* Hide interactive & decorative elements */
-  #navbar, .mobile-tab-bar, #back-to-top,
-  #tsparticles, .hero-bg, .scroll-indicator,
-  .pub-filter-row, .about-action, .btn-primary,
-  .download-btn, .contact-form-container,
-  .hamburger, #lang-toggle, #theme-toggle { display: none !important; }
+  #navbar,
+  .mobile-tab-bar,
+  #back-to-top,
+  #tsparticles,
+  .hero-bg,
+  .scroll-indicator,
+  .pub-filter-row,
+  .about-action,
+  .btn-primary,
+  .download-btn,
+  .contact-form-container,
+  .hamburger,
+  #lang-toggle,
+  #theme-toggle {
+    display: none !important;
+  }
 
   /* Reset backgrounds */
-  body, section, .expertise-card, .qual-card,
-  .research-item, .sup-item, .award-card,
-  .pub-item, .contact-card, .timeline-card {
+  body,
+  section,
+  .expertise-card,
+  .qual-card,
+  .research-item,
+  .sup-item,
+  .award-card,
+  .pub-item,
+  .contact-card,
+  .timeline-card {
     background: #fff !important;
     box-shadow: none !important;
     border-color: #ddd !important;
   }
 
   /* Black text for readability */
-  body, h1, h2, h3, h4, p, span, div, li {
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  span,
+  div,
+  li {
     color: #111 !important;
   }
 
   /* Page breaks */
-  section { page-break-before: always; padding: 1.5cm 0; }
-  #hero { page-break-before: avoid; }
+  section {
+    page-break-before: always;
+    padding: 1.5cm 0;
+  }
+
+  #hero {
+    page-break-before: avoid;
+  }
 
   /* Show full URL for links */
-  a[href]::after { content: " (" attr(href) ")"; font-size: 0.7rem; color: #555; }
-  a[href^="#"]::after { content: ""; }
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.7rem;
+    color: #555;
+  }
+
+  a[href^="#"]::after {
+    content: "";
+  }
 
   /* Hero compact */
-  #hero { min-height: auto !important; padding: 1.5rem 0; }
-  .hero-photo-ring { width: 100px !important; height: 100px !important; }
+  #hero {
+    min-height: auto !important;
+    padding: 1.5rem 0;
+  }
+
+  .hero-photo-ring {
+    width: 100px !important;
+    height: 100px !important;
+  }
 
   /* Show all pub items even if filtered */
-  .pub-item.hidden { display: block !important; }
+  .pub-item.hidden {
+    display: block !important;
+  }
 
   /* Progress bars at full width */
-  .exp-progress-fill { width: var(--bar-w, 80%) !important; }
+  .exp-progress-fill {
+    width: var(--bar-w, 80%) !important;
+  }
 }

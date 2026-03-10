@@ -1,0 +1,349 @@
+/* Extracted Responsive Rules */
+
+/* From css/base.css */
+@media (max-width: 650px) {
+  .pub-item {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+
+/* From css/base.css */
+@media (max-width: 700px) {
+  .pub-highlight {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* From css/base.css */
+@media (max-width: 500px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-num {
+    font-size: 3rem;
+  }
+
+  .impact-big-val {
+    font-size: 2rem;
+  }
+}
+
+/* From css/base.css */
+@media (max-width: 900px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* From css/base.css */
+@media (max-width: 600px) {
+  .hero-photo-ring {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-name {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* From css/base.css */
+@media (max-width: 900px) {
+  .nav-inner {
+    padding: 0 15px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .hero-badges {
+    justify-content: center;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline {
+    padding-left: 1.5rem;
+  }
+}
+
+/* From css/layout.css */
+@media print {
+
+  /* Hide interactive & decorative elements */
+  #navbar,
+  .mobile-tab-bar,
+  #back-to-top,
+  #tsparticles,
+  .hero-bg,
+  .scroll-indicator,
+  .pub-filter-row,
+  .about-action,
+  .btn-primary,
+  .download-btn,
+  .contact-form-container,
+  .hamburger,
+  #lang-toggle,
+  #theme-toggle {
+    display: none !important;
+  }
+
+  /* Reset backgrounds */
+  body,
+  section,
+  .expertise-card,
+  .qual-card,
+  .research-item,
+  .sup-item,
+  .award-card,
+  .pub-item,
+  .contact-card,
+  .timeline-card {
+    background: #fff !important;
+    box-shadow: none !important;
+    border-color: #ddd !important;
+  }
+
+  /* Black text for readability */
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  span,
+  div,
+  li {
+    color: #111 !important;
+  }
+
+  /* Page breaks */
+  section {
+    page-break-before: always;
+    padding: 1.5cm 0;
+  }
+
+  #hero {
+    page-break-before: avoid;
+  }
+
+  /* Show full URL for links */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.7rem;
+    color: #555;
+  }
+
+  a[href^="#"]::after {
+    content: "";
+  }
+
+  /* Hero compact */
+  #hero {
+    min-height: auto !important;
+    padding: 1.5rem 0;
+  }
+
+  .hero-photo-ring {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  /* Show all pub items even if filtered */
+  .pub-item.hidden {
+    display: block !important;
+  }
+
+  /* Progress bars at full width */
+  .exp-progress-fill {
+    width: var(--bar-w, 80%) !important;
+  }
+}
+
+/* From css/layout.css */
+@media (max-width: 768px) {
+  .mobile-tab-bar {
+    display: flex;
+  }
+
+  /* Create space at bottom so footer/content isn't covered */
+  body {
+    padding-bottom: 65px;
+  }
+
+  /* Hide the old "Back to top" button on mobile, it clashes with top bar */
+  #back-to-top {
+    display: none !important;
+  }
+}
+
+/* From css/layout.css */
+@media (max-width: 800px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* From css/components.css */
+@media (max-width: 600px) {
+  .premium-stat-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .premium-stat-rm {
+    font-size: 1.5rem;
+  }
+
+  .premium-stat-num {
+    font-size: 2.2rem;
+  }
+}
+
+/* From css/components.css */
+@media (max-width: 500px) {
+  .award-card {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .award-card::before {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width: 100%;
+    height: 4px;
+  }
+
+  .research-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ri-meta {
+    flex-direction: row;
+    min-width: auto;
+  }
+}
+
+/* From css/components.css */
+@media (max-width: 450px) {
+  .consult-client-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* From css/components.css */
+@media (max-width: 700px) {
+  .consult-client-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* From css/components.css */
+@media (max-width: 500px) {
+  .consult-amount {
+    font-size: 2.5rem;
+  }
+
+  .consult-rm {
+    font-size: 1.4rem;
+  }
+}
+
+/* From css/components.css */
+@media (max-width: 650px) {
+  .research-stats-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .research-stat-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .rsnum {
+    font-size: 2.2rem;
+  }
+}
+
+/* From css/components.css */
+@media (max-width: 600px) {
+  .supervision-stat-row {
+    gap: 1rem;
+  }
+
+  .supervision-stat {
+    min-width: 120px;
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* From css/components.css */
+@media (max-width: 700px) {
+  .qual-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .qual-meta {
+    align-items: flex-start;
+  }
+
+  .qual-uni {
+    text-align: left;
+    max-width: 100%;
+  }
+}
+

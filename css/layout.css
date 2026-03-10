@@ -693,12 +693,7 @@ section:nth-child(even) {
   color: var(--gold);
 }
 
-@media (max-width: 800px) {
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-}
+
 
 .contact-form-container {
   background: var(--bg-card);
@@ -925,21 +920,7 @@ section:nth-child(even) {
   color: var(--gold);
 }
 
-@media (max-width: 768px) {
-  .mobile-tab-bar {
-    display: flex;
-  }
 
-  /* Create space at bottom so footer/content isn't covered */
-  body {
-    padding-bottom: 65px;
-  }
-
-  /* Hide the old "Back to top" button on mobile, it clashes with top bar */
-  #back-to-top {
-    display: none !important;
-  }
-}
 
 /* =============================
    #9 — MOBILE BOTTOM TAB ACTIVE (Enhanced)
@@ -967,94 +948,3 @@ section:nth-child(even) {
 /* =============================
    #10 — PRINT-FRIENDLY CSS
    ============================= */
-@media print {
-
-  /* Hide interactive & decorative elements */
-  #navbar,
-  .mobile-tab-bar,
-  #back-to-top,
-  #tsparticles,
-  .hero-bg,
-  .scroll-indicator,
-  .pub-filter-row,
-  .about-action,
-  .btn-primary,
-  .download-btn,
-  .contact-form-container,
-  .hamburger,
-  #lang-toggle,
-  #theme-toggle {
-    display: none !important;
-  }
-
-  /* Reset backgrounds */
-  body,
-  section,
-  .expertise-card,
-  .qual-card,
-  .research-item,
-  .sup-item,
-  .award-card,
-  .pub-item,
-  .contact-card,
-  .timeline-card {
-    background: #fff !important;
-    box-shadow: none !important;
-    border-color: #ddd !important;
-  }
-
-  /* Black text for readability */
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  span,
-  div,
-  li {
-    color: #111 !important;
-  }
-
-  /* Page breaks */
-  section {
-    page-break-before: always;
-    padding: 1.5cm 0;
-  }
-
-  #hero {
-    page-break-before: avoid;
-  }
-
-  /* Show full URL for links */
-  a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.7rem;
-    color: #555;
-  }
-
-  a[href^="#"]::after {
-    content: "";
-  }
-
-  /* Hero compact */
-  #hero {
-    min-height: auto !important;
-    padding: 1.5rem 0;
-  }
-
-  .hero-photo-ring {
-    width: 100px !important;
-    height: 100px !important;
-  }
-
-  /* Show all pub items even if filtered */
-  .pub-item.hidden {
-    display: block !important;
-  }
-
-  /* Progress bars at full width */
-  .exp-progress-fill {
-    width: var(--bar-w, 80%) !important;
-  }
-}

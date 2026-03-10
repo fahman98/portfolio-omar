@@ -229,78 +229,9 @@ footer {
 /* =============================
    RESPONSIVE
    ============================= */
-@media (max-width: 900px) {
-  .nav-inner {
-    padding: 0 15px;
-  }
 
-  .nav-links {
-    display: none;
-  }
 
-  .hamburger {
-    display: flex;
-  }
 
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 2.5rem;
-    padding: 5rem 1.5rem 3rem;
-  }
-
-  .hero-badges {
-    justify-content: center;
-  }
-
-  .hero-cta {
-    justify-content: center;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .about-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .expertise-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline {
-    padding-left: 1.5rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-photo-ring {
-    width: 200px;
-    height: 200px;
-  }
-
-  .hero-name {
-    font-size: 2rem;
-  }
-
-  section {
-    padding: 4rem 0;
-  }
-
-  .expertise-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* =============================
    DROPDOWN NAV
@@ -607,25 +538,9 @@ footer {
   letter-spacing: 0.5px;
 }
 
-@media (max-width: 900px) {
-  .impact-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 500px) {
-  .impact-grid {
-    grid-template-columns: 1fr;
-  }
 
-  .impact-num {
-    font-size: 3rem;
-  }
 
-  .impact-big-val {
-    font-size: 2rem;
-  }
-}
 
 /* =============================
    PUBLICATION HIGHLIGHT
@@ -692,14 +607,7 @@ footer {
   flex: 1;
 }
 
-@media (max-width: 700px) {
-  .pub-highlight {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-    padding: 2rem 1.5rem;
-  }
-}
+
 
 /* =============================
    PUBLICATION LIST ITEMS
@@ -793,12 +701,7 @@ footer {
   font-style: italic;
 }
 
-@media (max-width: 650px) {
-  .pub-item {
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-}
+
 
 /* =============================
    SUPERVISION LIST

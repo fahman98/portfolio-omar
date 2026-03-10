@@ -210,8 +210,8 @@ backToTopBtn.addEventListener('click', () => {
    SCROLL-SPY NAV HIGHLIGHT
    ============================= */
 // All section IDs that have nav links
-const mainNavSections = ['about', 'expertise', 'roles', 'research', 'qualification'];
-const dropdownSections = ['publication', 'commercialisation', 'supervision', 'consultation', 'awards', 'membership', 'contact'];
+const mainNavSections = ['about', 'expertise', 'roles', 'qualification', 'research'];
+const dropdownSections = ['consultation', 'publication', 'supervision', 'commercialisation', 'awards', 'contributions', 'contact'];
 const allSpySections = [...mainNavSections, ...dropdownSections];
 
 const mainNavLinks = document.querySelectorAll('.nav-links > a');

@@ -289,13 +289,7 @@
 /* =============================
    CONTACT
    ============================= */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  max-width: 860px;
-  margin: 0 auto;
-}
+
 
 .contact-card {
   background: var(--bg-card);
@@ -1123,4 +1117,3 @@
 .pub-item.hidden {
   display: none;
 }
-

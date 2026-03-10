@@ -211,7 +211,7 @@ backToTopBtn.addEventListener('click', () => {
    ============================= */
 // All section IDs that have nav links
 const mainNavSections = ['about', 'expertise', 'roles', 'qualification', 'research'];
-const dropdownSections = ['consultation', 'publication', 'supervision', 'commercialisation', 'awards', 'contributions', 'contact'];
+const dropdownSections = ['consultation', 'publication', 'supervision', 'commercialisation', 'copyright', 'awards', 'contributions', 'contact'];
 const allSpySections = [...mainNavSections, ...dropdownSections];
 
 const mainNavLinks = document.querySelectorAll('.nav-links > a');
@@ -285,6 +285,48 @@ function updateScrollSpy() {
   });
 }
 
+/* =============================
+   #5 — EXPERTISE PROGRESS BAR ANIMATION
+   ============================= */
+document.querySelectorAll('.exp-progress-fill').forEach(fill => {
+  const pct = fill.getAttribute('data-width');
+  fill.style.setProperty('--bar-w', pct + '%');
+});
+
+// Animate bars when card becomes visible (reuse existing observer logic)
+const expCards = document.querySelectorAll('.expertise-card');
+const expObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+expCards.forEach(card => expObserver.observe(card));
+
+/* =============================
+   #6 — PUBLICATION FILTER
+   ============================= */
+const pubFilterBtns = document.querySelectorAll('.pub-filter-btn');
+const pubItems = document.querySelectorAll('.pub-list-items .pub-item');
+
+pubFilterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Update active button
+    pubFilterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.getAttribute('data-filter');
+
+    pubItems.forEach(item => {
+      if (filter === 'all' || item.getAttribute('data-index') === filter) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  });
+});
 // Run on scroll and on load
 window.addEventListener('scroll', updateScrollSpy, { passive: true });
 updateScrollSpy();

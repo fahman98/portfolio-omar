@@ -2991,3 +2991,161 @@ footer {
 [data-theme="dark"] .acad-table tbody td[rowspan] {
   background-color: rgba(255, 255, 255, 0.02);
 }
+
+/* =============================
+   #5 — EXPERTISE PROGRESS BARS
+   ============================= */
+.exp-progress-wrap {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.exp-progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.exp-progress-pct {
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+.exp-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-secondary);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.exp-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  border-radius: 999px;
+  transition: width 1s ease;
+}
+
+.expertise-card.visible .exp-progress-fill {
+  width: var(--bar-w, 0%);
+}
+
+/* =============================
+   #6 — PUBLICATION FILTER TABS
+   ============================= */
+.pub-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.pub-filter-btn {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+
+.pub-filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold-dark);
+}
+
+.pub-filter-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--gold-light);
+}
+
+[data-theme="dark"] .pub-filter-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.pub-item.hidden {
+  display: none;
+}
+
+/* =============================
+   #9 — MOBILE BOTTOM TAB ACTIVE (Enhanced)
+   ============================= */
+.tab-item {
+  position: relative;
+}
+
+.tab-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 0 0 4px 4px;
+}
+
+.tab-item.active svg {
+  filter: drop-shadow(0 0 4px rgba(200, 169, 110, 0.5));
+}
+
+/* =============================
+   #10 — PRINT-FRIENDLY CSS
+   ============================= */
+@media print {
+  /* Hide interactive & decorative elements */
+  #navbar, .mobile-tab-bar, #back-to-top,
+  #tsparticles, .hero-bg, .scroll-indicator,
+  .pub-filter-row, .about-action, .btn-primary,
+  .download-btn, .contact-form-container,
+  .hamburger, #lang-toggle, #theme-toggle { display: none !important; }
+
+  /* Reset backgrounds */
+  body, section, .expertise-card, .qual-card,
+  .research-item, .sup-item, .award-card,
+  .pub-item, .contact-card, .timeline-card {
+    background: #fff !important;
+    box-shadow: none !important;
+    border-color: #ddd !important;
+  }
+
+  /* Black text for readability */
+  body, h1, h2, h3, h4, p, span, div, li {
+    color: #111 !important;
+  }
+
+  /* Page breaks */
+  section { page-break-before: always; padding: 1.5cm 0; }
+  #hero { page-break-before: avoid; }
+
+  /* Show full URL for links */
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.7rem; color: #555; }
+  a[href^="#"]::after { content: ""; }
+
+  /* Hero compact */
+  #hero { min-height: auto !important; padding: 1.5rem 0; }
+  .hero-photo-ring { width: 100px !important; height: 100px !important; }
+
+  /* Show all pub items even if filtered */
+  .pub-item.hidden { display: block !important; }
+
+  /* Progress bars at full width */
+  .exp-progress-fill { width: var(--bar-w, 80%) !important; }
+}

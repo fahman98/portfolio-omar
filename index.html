@@ -16,14 +16,14 @@
     content="Official academic portfolio of Dr. Omar Firdaus bin Mohd Said, Director of Alumni Centre, Universiti Pendidikan Sultan Idris (UPSI)." />
   <meta property="og:url" content="https://omarfirdaus.my/" />
   <meta property="og:type" content="profile" />
-  <meta property="og:image" content="https://omarfirdaus.my/photo.jpg" />
+  <meta property="og:image" content="https://omarfirdaus.my/photo.webp" />
 
   <!-- Twitter Card Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Dr. Omar Firdaus bin Mohd Said | Academic Portfolio" />
   <meta name="twitter:description"
     content="Official academic portfolio of Dr. Omar Firdaus bin Mohd Said, Director of Alumni Centre, Universiti Pendidikan Sultan Idris (UPSI)." />
-  <meta name="twitter:image" content="https://omarfirdaus.my/photo.jpg" />
+  <meta name="twitter:image" content="https://omarfirdaus.my/photo.webp" />
 
   <!-- JSON-LD Structured Data for Academic Profiling -->
   <script type="application/ld+json">
@@ -39,7 +39,7 @@
       "url": "https://www.upsi.edu.my"
     },
     "url": "https://omarfirdaus.my/",
-    "image": "https://omarfirdaus.my/photo.jpg",
+    "image": "https://omarfirdaus.my/photo.webp",
     "sameAs": [
       "https://my.linkedin.com/in/dr-omar-firdaus-mohd-said-b660a92",
       "https://scholar.google.com.my/citations?user=nTR1K0oAAAAJ&hl=en"
@@ -48,6 +48,14 @@
   </script>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Preload Critical Fonts -->
+  <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+
   <link rel="stylesheet" href="style.css?v=3" />
 </head>
 
@@ -146,7 +154,7 @@
         <div class="hero-photo-ring">
           <picture>
             <source srcset="photo.webp" type="image/webp">
-            <img loading="lazy" src="photo.jpg"
+            <img loading="lazy" src="photo.webp"
               alt="Potret Rasmi Dr. Omar Firdaus, Pengarah Pusat Alumni Keseluruhan UPSI" class="hero-photo"
               id="profile-img"
               onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex';" />

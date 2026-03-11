@@ -761,9 +761,27 @@ section:nth-child(even) {
 /* =============================
    SOCIAL LINKS
    ============================= */
-.social-links {
+.social-sections-wrapper {
   margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.social-group {
   text-align: center;
+}
+
+.social-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.social-links {
   display: flex;
   justify-content: center;
   gap: 1.5rem;

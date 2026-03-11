@@ -80,8 +80,8 @@
   --bg-secondary: #0a1420;
   --bg-card: #162338;
   --text-primary: #f0ece4;
-  --text-secondary: #c0b8ac;
-  --text-muted: #8a8070;
+  --text-secondary: #d1c8bb; /* Lighter for better contrast */
+  --text-muted: #a69e90; /* Lighter for better contrast */
   --border: #1e3050;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.5);

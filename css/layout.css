@@ -277,106 +277,51 @@
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 4rem 2rem 0 2rem;
   display: flex;
   align-items: center;
-  gap: 5rem;
+  justify-content: space-between;
+  gap: 2rem;
   position: relative;
   z-index: 1;
   width: 100%;
 }
 
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+  padding-bottom: 4rem;
+}
+
 .hero-photo-wrapper {
   position: relative;
-  flex-shrink: 0;
-}
-
-.hero-photo-ring {
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  padding: 5px;
-  background: linear-gradient(135deg, var(--gold), var(--navy), var(--gold-dark), var(--navy-light));
-  background-size: 300% 300%;
-  box-shadow: 0 20px 60px rgba(200, 169, 110, 0.25);
-  position: relative;
-  /* Applying the spinning gradient animation */
-  animation: spinGradient 8s ease infinite;
-}
-
-@keyframes spinGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.hero-photo {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top center;
-  background: var(--bg-secondary);
-}
-
-.photo-placeholder {
-  display: none;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: var(--bg-secondary);
-  align-items: center;
+  flex: 1;
+  display: flex;
   justify-content: center;
-  color: var(--text-muted);
+  align-items: flex-end;
+  height: 100%;
+  align-self: flex-end;
 }
 
-.photo-placeholder svg {
-  width: 80px;
-  height: 80px;
+.hero-photo-full {
+  max-width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
+  animation: floatIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.expert-badge {
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--navy);
-  color: var(--gold);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  border: 2px solid var(--gold);
-  box-shadow: var(--shadow);
-  /* Applying the floating/bobbing animation */
-  animation: floatBadge 4s ease-in-out infinite;
-}
-
-@keyframes floatBadge {
-
-  0%,
-  100% {
-    transform: translate(-50%, 0);
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
-
-  50% {
-    transform: translate(-50%, -8px);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-}
-
-[data-theme="dark"] .expert-badge {
-  background: var(--gold);
-  color: var(--navy);
-  border-color: var(--navy);
 }
 
 .hero-label {

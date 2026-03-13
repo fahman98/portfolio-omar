@@ -42,9 +42,8 @@
 
 /* From css/base.css */
 @media (max-width: 600px) {
-  .hero-photo-ring {
-    width: 200px;
-    height: 200px;
+  .hero-photo-full {
+    max-height: 50vh;
   }
 
   .hero-name {

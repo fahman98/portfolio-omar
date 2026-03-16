@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Not Found | Dr. Omar Firdaus</title>
+  
+  <link rel="stylesheet" href="css/base.css?v=3" />
+  <link rel="stylesheet" href="css/layout.css?v=3" />
+  <link rel="stylesheet" href="css/components.css?v=3" />
+  <link rel="stylesheet" href="css/responsive.css?v=2" />
+  
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      const lang = localStorage.getItem('lang') || 'en';
+      document.documentElement.setAttribute('data-lang', lang);
+    })();
+  </script>
+
+  <style>
+    .error-container {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .error-code {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(6rem, 15vw, 10rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 1rem;
+      text-shadow: 0 10px 30px rgba(200, 169, 110, 0.2);
+    }
+
+    .error-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .error-message {
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .error-icon {
+      width: 80px;
+      height: 80px;
+      color: var(--gold-dark);
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV (Simplified for 404) -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <a href="/" class="brand-title">Dr. Omar Firdaus</a>
+      </div>
+      <div class="nav-actions">
+        <button id="lang-toggle" aria-label="Switch language">
+          <span id="lang-label">BM</span>
+        </button>
+        <button id="theme-toggle" aria-label="Toggle dark/light mode">
+          <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="error-container">
+    <div class="error-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+    </div>
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title" data-en="Oops! Page Not Found" data-ms="Ops! Halaman Tidak Dijumpai">Oops! Page Not Found</h2>
+    <p class="error-message" data-en="The page you are looking for might have been removed, had its name changed, or is temporarily unavailable." data-ms="Halaman yang anda cari mungkin telah dikeluarkan, namanya telah ditukar, atau tidak dapat dicapai buat sementara waktu.">
+      The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+    </p>
+    <a href="/" class="btn-primary" data-en="Back to Home" data-ms="Kembali ke Utama">Back to Home</a>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-name">Dr. Omar Firdaus bin Mohd Said</p>
+      <p class="footer-sub" data-en="Director, Alumni Centre | Faculty of Sports Science & Coaching | UPSI"
+        data-ms="Pengarah, Pusat Alumni | Fakulti Sains Sukan & Kejurulatihan | UPSI">Director, Alumni Centre | Faculty
+        of Sports Science & Coaching | UPSI</p>
+      <div class="footer-divider"></div>
+      <p class="footer-copy" data-en="© 2026 Dr. Omar Firdaus bin Mohd Said. All rights reserved."
+        data-ms="© 2026 Dr. Omar Firdaus bin Mohd Said. Hak cipta terpelihara.">© 2026 Dr. Omar Firdaus bin Mohd Said.
+        All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal script for 404 page theme/lang handling
+    const html = document.documentElement;
+    const langToggle = document.getElementById('lang-toggle');
+    const themeToggle = document.getElementById('theme-toggle');
+    const langLabel = document.getElementById('lang-label');
+
+    // Language handling
+    function applyLang(lang) {
+      html.setAttribute('data-lang', lang);
+      if (langLabel) langLabel.textContent = lang === 'en' ? 'BM' : 'EN';
+      document.querySelectorAll('[data-en][data-ms]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+    }
+
+    langToggle.addEventListener('click', () => {
+      let currentLang = localStorage.getItem('lang') || 'en';
+      currentLang = currentLang === 'en' ? 'ms' : 'en';
+      localStorage.setItem('lang', currentLang);
+      applyLang(currentLang);
+    });
+
+    // Theme handling
+    themeToggle.addEventListener('click', () => {
+      let currentTheme = localStorage.getItem('theme') || 'light';
+      currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', currentTheme);
+      localStorage.setItem('theme', currentTheme);
+    });
+
+    // Initialize
+    applyLang(localStorage.getItem('lang') || 'en');
+  </script>
+</body>
+
+</html>

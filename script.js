@@ -1,4 +1,182 @@
 /* =============================
+   DYNAMIC CONTENT RENDERING
+   ============================= */
+function renderPortfolio() {
+  if (typeof portfolioData === 'undefined') return;
+
+  // Render Research
+  const researchList = document.querySelector('#research .research-list');
+  if (researchList) {
+    researchList.innerHTML = portfolioData.research.map(item => `
+      <div class="research-item fade-up">
+        <div class="ri-meta">
+          <span class="ri-year">${item.year}</span>
+          <span class="ri-role ri-role--${item.type}" data-en="${item.role}" data-ms="${item.roleMs}">${item.role}</span>
+        </div>
+        <div class="ri-body">
+          <div class="ri-title" data-en="${item.titleEn}" data-ms="${item.titleMs}">${item.titleEn}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Render Publications
+  const pubList = document.querySelector('.pub-list-items');
+  if (pubList) {
+    pubList.innerHTML = portfolioData.publications.map(pub => {
+      const onclickAttr = pub.pdf ? `style="cursor: pointer;" onclick="openPdfModal('${pub.pdf}', '${pub.title.replace(/'/g, "\\'")}')"` : '';
+      const titleStyle = pub.pdf ? 'style="color: var(--gold); text-decoration: underline;"' : '';
+      return `
+        <div class="pub-item" data-index="${pub.index}" ${onclickAttr}>
+          <span class="pub-badge pub-badge--${pub.badgeType}">${pub.badge}</span>
+          <div class="pub-item-body">
+            <div class="pub-item-title" ${titleStyle}>${pub.title}</div>
+            <div class="pub-item-journal">${pub.journal}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Render Supervision
+  const supList = document.querySelector('.sup-list');
+  if (supList) {
+    supList.innerHTML = portfolioData.supervision.map(sup => `
+      <div class="sup-item ${sup.active ? '' : 'sup-item--completed'} fade-up">
+        <div class="sup-status-dot ${sup.active ? 'sup-status-dot--active' : ''}"></div>
+        <div class="sup-detail">
+          <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.3rem;">${sup.name} 
+            <span style="font-weight: 400; font-size: 0.8rem; color: var(--text-muted);">(${sup.year})</span>
+          </div>
+          <div class="sup-thesis">${sup.thesis}</div>
+          <div class="sup-meta">
+            ${sup.tags.map(tag => `<span class="sup-tag ${tag === 'International' ? 'sup-tag--intl' : (tag === 'Completed' ? 'sup-tag--done' : 'sup-tag--pending')}">${tag}</span>`).join('')}
+            <span class="sup-role-tag">${sup.role}</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Render Commercialisation
+  const commList = document.querySelector('#commercialisation .research-list');
+  if (commList) {
+    const items = portfolioData.commercialisation.map(item => `
+      <div class="research-item fade-up">
+        <div class="ri-meta"><span class="ri-year">${item.year}</span><span class="ri-role ri-role--lead">Commercialization</span></div>
+        <div class="ri-body">
+          <div class="ri-title">${item.title}</div>
+          <div class="ri-funder">Value: ${item.value}</div>
+        </div>
+      </div>
+    `).join('');
+    
+    // Add Total
+    const totalValue = portfolioData.commercialisation.reduce((acc, curr) => acc + parseFloat(curr.value.replace(/RM\s|,/g, '')), 0);
+    const totalHtml = `
+      <div class="research-item fade-up" style="border-left: 4px solid var(--gold); background: var(--bg-secondary);">
+        <div class="ri-meta"><span class="ri-year">Total</span><span class="ri-role ri-role--lead">Value</span></div>
+        <div class="ri-body">
+          <div class="ri-title" style="color: var(--text-primary);">Jumlah Keseluruhan (Total Commercialization Value)</div>
+          <div class="ri-funder" style="font-weight: 700; font-size: 1.1rem; color: var(--gold);">RM ${totalValue.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
+        </div>
+      </div>
+    `;
+    commList.innerHTML = items + totalHtml;
+  }
+
+  // Render Copyright
+  const copyrightList = document.querySelector('#copyright .research-list');
+  if (copyrightList) {
+    copyrightList.innerHTML = portfolioData.copyright.map(item => `
+      <div class="research-item fade-up">
+        <div class="ri-meta"><span class="ri-year">${item.year}</span><span class="ri-role ri-role--member">IP Registration</span></div>
+        <div class="ri-body"><div class="ri-title">${item.title}</div></div>
+      </div>
+    `).join('');
+  }
+
+  // Render Awards
+  const awardsGrid = document.querySelector('#awards .awards-grid');
+  if (awardsGrid) {
+    awardsGrid.innerHTML = portfolioData.awards.map(item => `
+      <div class="award-card fade-up">
+        <div class="award-detail">
+          <div class="award-title">${item.title}</div>
+          <div class="award-event">${item.event}</div>
+          <div class="award-meta"><span class="award-year">${item.year}</span></div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Render Contributions
+  const contribGrid = document.querySelector('#contributions .awards-grid');
+  if (contribGrid) {
+    contribGrid.innerHTML = portfolioData.contributions.map(item => `
+      <div class="award-card fade-up">
+        <div class="award-detail">
+          <div class="award-title">${item.title}</div>
+          <div class="award-event">${item.event}</div>
+          <div class="award-meta"><span class="award-year">${item.year}</span></div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Re-run language application for dynamic items
+  applyLang(localStorage.getItem('lang') || 'en');
+  
+  // Re-observe dynamic elements for animation
+  const dynamicEls = document.querySelectorAll('.research-item, .pub-item, .sup-item, .award-card');
+  dynamicEls.forEach(el => observer.observe(el));
+}
+
+/* =============================
+   PDF MODAL
+   ============================= */
+function openPdfModal(pdfPath, title) {
+  const modal = document.getElementById('pdfModal');
+  const iframe = document.getElementById('pdfIframe');
+  const skeleton = document.getElementById('pdfSkeleton');
+  
+  document.getElementById('pdfModalTitle').innerText = title;
+  document.getElementById('pdfDownloadLink').href = pdfPath;
+  
+  // Reset state
+  skeleton.style.display = 'flex';
+  iframe.classList.remove('loaded');
+  iframe.src = pdfPath;
+  
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden'; 
+
+  // Iframe load listener
+  iframe.onload = function() {
+    skeleton.style.display = 'none';
+    iframe.classList.add('loaded');
+  };
+}
+
+function closePdfModal() {
+  const modal = document.getElementById('pdfModal');
+  const iframe = document.getElementById('pdfIframe');
+  if (!modal) return;
+  modal.style.display = 'none';
+  iframe.src = ''; 
+  iframe.classList.remove('loaded');
+  document.body.style.overflow = 'auto'; 
+}
+
+// Close modal when clicking outside of the content
+window.addEventListener('click', (event) => {
+  const modal = document.getElementById('pdfModal');
+  if (event.target == modal) {
+    closePdfModal();
+  }
+});
+
+/* =============================
    LANGUAGE TOGGLE
    ============================= */
 const html = document.documentElement;
@@ -16,7 +194,7 @@ langToggle.addEventListener('click', () => {
 
 function applyLang(lang) {
   html.setAttribute('data-lang', lang);
-  langLabel.textContent = lang === 'en' ? 'BM' : 'EN';
+  if (langLabel) langLabel.textContent = lang === 'en' ? 'BM' : 'EN';
 
   document.querySelectorAll('[data-en][data-ms]').forEach(el => {
     el.textContent = el.getAttribute(`data-${lang}`);
@@ -126,21 +304,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    ============================= */
 const animEls = document.querySelectorAll('.stat-card, .expertise-card, .contact-wrapper, .about-text, .about-stats, .section-header, .research-stat-card, .research-item, .qual-card, .sup-item, .consult-client-card, .award-card, .impact-card, .social-btn');
 
-// Add fade-up class
-animEls.forEach((el, i) => {
-  el.classList.add('fade-up');
-  // Add staggered delays for a subtle branching effect
-  if (i % 3 === 1) el.classList.add('delay-1');
-  if (i % 3 === 2) el.classList.add('delay-2');
-});
-
-const slideEls = document.querySelectorAll('.timeline-item');
-slideEls.forEach((el, i) => {
-  el.classList.add('slide-in-right');
-  if (i === 1) el.classList.add('delay-1');
-  if (i === 2) el.classList.add('delay-2');
-});
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -149,8 +312,20 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-animEls.forEach(el => observer.observe(el));
-slideEls.forEach(el => observer.observe(el));
+animEls.forEach((el, i) => {
+  el.classList.add('fade-up');
+  if (i % 3 === 1) el.classList.add('delay-1');
+  if (i % 3 === 2) el.classList.add('delay-2');
+  observer.observe(el);
+});
+
+const slideEls = document.querySelectorAll('.timeline-item');
+slideEls.forEach((el, i) => {
+  el.classList.add('slide-in-right');
+  if (i === 1) el.classList.add('delay-1');
+  if (i === 2) el.classList.add('delay-2');
+  observer.observe(el);
+});
 
 /* =============================
    IMPACT COUNTER ANIMATION
@@ -175,11 +350,9 @@ if (impactSection) {
     entries.forEach(entry => {
       if (entry.isIntersecting && !counted) {
         counted = true;
-        // Animate .impact-num elements
         document.querySelectorAll('.impact-num[data-target]').forEach(el => {
           animateCounter(el, parseInt(el.getAttribute('data-target')));
         });
-        // Animate .split-num elements
         document.querySelectorAll('.split-num[data-target]').forEach(el => {
           animateCounter(el, parseInt(el.getAttribute('data-target')));
         });
@@ -209,18 +382,11 @@ backToTopBtn.addEventListener('click', () => {
 /* =============================
    SCROLL-SPY NAV HIGHLIGHT
    ============================= */
-// All section IDs that have nav links
-const mainNavSections = ['about', 'expertise', 'roles', 'qualification', 'research'];
 const dropdownSections = ['consultation', 'publication', 'supervision', 'commercialisation', 'copyright', 'awards', 'contributions', 'contact'];
-const allSpySections = [...mainNavSections, ...dropdownSections];
+const allSpySections = ['about', 'expertise', 'roles', 'qualification', 'research', ...dropdownSections];
 
-const mainNavLinks = document.querySelectorAll('.nav-links > a');
-const mobileLinks = document.querySelectorAll('.mobile-menu a');
-// navMoreBtn already declared above in DROPDOWN NAV section
-
-
-function getActiveSectionId() {
-  const scrollY = window.scrollY + 120; // offset for navbar height
+function updateScrollSpy() {
+  const scrollY = window.scrollY + 120;
   let activeId = null;
 
   for (const id of allSpySections) {
@@ -229,107 +395,64 @@ function getActiveSectionId() {
       activeId = id;
     }
   }
-  return activeId;
-}
 
-function updateScrollSpy() {
-  const activeId = getActiveSectionId();
   const isDropdown = dropdownSections.includes(activeId);
 
-  // Update main nav links (desktop)
-  mainNavLinks.forEach(link => {
+  document.querySelectorAll('.nav-links > li > a').forEach(link => {
     const href = link.getAttribute('href')?.replace('#', '');
-    if (href === activeId) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    if (href === activeId) link.classList.add('active');
+    else link.classList.remove('active');
   });
 
-  // Highlight "More" button if active section is inside dropdown
   if (navMoreBtn) {
-    if (isDropdown) {
-      navMoreBtn.classList.add('active');
-    } else {
-      navMoreBtn.classList.remove('active');
-    }
+    if (isDropdown) navMoreBtn.classList.add('active');
+    else navMoreBtn.classList.remove('active');
   }
 
-  // Update mobile menu links
-  mobileLinks.forEach(link => {
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
     const href = link.getAttribute('href')?.replace('#', '');
-    if (href === activeId) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    if (href === activeId) link.classList.add('active');
+    else link.classList.remove('active');
   });
 
-  // Update mobile bottom tab bar links
-  const bottomNavLinks = document.querySelectorAll('.mobile-tab-bar .tab-item');
-  bottomNavLinks.forEach(link => {
+  document.querySelectorAll('.mobile-tab-bar .tab-item').forEach(link => {
     const href = link.getAttribute('href')?.replace('#', '');
     let isActive = false;
-
-    // Logic to map the many sections to the 4 bottom tabs
     if (href === 'hero' && (!activeId || activeId === 'hero' || activeId === 'about')) isActive = true;
     if (href === 'expertise' && (activeId === 'expertise' || activeId === 'impact' || activeId === 'roles')) isActive = true;
     if (href === 'research' && (activeId === 'research' || activeId === 'publication' || activeId === 'supervision' || activeId === 'qualification' || activeId === 'awards')) isActive = true;
     if (href === 'contact' && activeId === 'contact') isActive = true;
 
-    if (isActive) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    if (isActive) link.classList.add('active');
+    else link.classList.remove('active');
   });
 }
 
+window.addEventListener('scroll', updateScrollSpy, { passive: true });
+
 /* =============================
-   #5 — EXPERTISE PROGRESS BAR ANIMATION
+   EXPERTISE PROGRESS BAR ANIMATION
    ============================= */
 document.querySelectorAll('.exp-progress-fill').forEach(fill => {
   const pct = fill.getAttribute('data-width');
   fill.style.setProperty('--bar-w', pct + '%');
 });
 
-// Animate bars when card becomes visible (reuse existing observer logic)
-const expCards = document.querySelectorAll('.expertise-card');
-const expObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.2 });
-expCards.forEach(card => expObserver.observe(card));
-
 /* =============================
-   #6 — PUBLICATION FILTER
+   PUBLICATION FILTER
    ============================= */
 const pubFilterBtns = document.querySelectorAll('.pub-filter-btn');
-const pubItems = document.querySelectorAll('.pub-list-items .pub-item');
-
 pubFilterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    // Update active button
     pubFilterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-
     const filter = btn.getAttribute('data-filter');
-
-    pubItems.forEach(item => {
-      if (filter === 'all' || item.getAttribute('data-index') === filter) {
-        item.classList.remove('hidden');
-      } else {
-        item.classList.add('hidden');
-      }
+    document.querySelectorAll('.pub-list-items .pub-item').forEach(item => {
+      if (filter === 'all' || item.getAttribute('data-index') === filter) item.classList.remove('hidden');
+      else item.classList.add('hidden');
     });
   });
 });
-// Run on scroll and on load
-window.addEventListener('scroll', updateScrollSpy, { passive: true });
-updateScrollSpy();
 
 /* =============================
    TYPEWRITER EFFECT
@@ -342,18 +465,10 @@ if (typeText) {
     { en: "Industry Consultant", ms: "Perunding Industri" },
     { en: "Sports Researcher", ms: "Penyelidik Sukan" }
   ];
-
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingDelay = 100;
-  let erasingDelay = 50;
-  let newTextDelay = 2000;
-
+  let roleIndex = 0, charIndex = 0, isDeleting = false;
   function type() {
-    const currentLang = html.getAttribute('data-lang') || 'en';
-    const currentRole = roles[roleIndex][currentLang];
-
+    const lang = html.getAttribute('data-lang') || 'en';
+    const currentRole = roles[roleIndex][lang];
     if (isDeleting) {
       typeText.textContent = currentRole.substring(0, charIndex - 1);
       charIndex--;
@@ -361,27 +476,20 @@ if (typeText) {
       typeText.textContent = currentRole.substring(0, charIndex + 1);
       charIndex++;
     }
-
-    let typeSpeed = isDeleting ? erasingDelay : typingDelay;
-
+    let speed = isDeleting ? 50 : 100;
     if (!isDeleting && charIndex === currentRole.length) {
-      typeSpeed = newTextDelay;
+      speed = 2000;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
-      typeSpeed = 500; // Small pause before typing next word
+      speed = 500;
     }
-
-    // Explicitly update data attributes to keep lang toggle in sync
     typeText.setAttribute('data-en', roles[roleIndex].en);
     typeText.setAttribute('data-ms', roles[roleIndex].ms);
-
-    setTimeout(type, typeSpeed);
+    setTimeout(type, speed);
   }
-
-  // Initial call after small delay
-  setTimeout(type, newTextDelay);
+  setTimeout(type, 2000);
 }
 
 /* =============================
@@ -396,50 +504,12 @@ if (typeof tsParticles !== 'undefined') {
       shape: { type: "circle" },
       opacity: { value: 0.3 },
       size: { value: { min: 1, max: 2 } },
-      links: {
-        enable: true,
-        distance: 150,
-        color: "#c8a96e",
-        opacity: 0.15,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 0.6,
-        direction: "none",
-        random: true,
-        straight: false,
-        outModes: "out"
-      }
+      links: { enable: true, distance: 150, color: "#c8a96e", opacity: 0.15, width: 1 },
+      move: { enable: true, speed: 0.6, direction: "none", random: true, straight: false, outModes: "out" }
     },
-    interactivity: {
-      events: {
-        onHover: { enable: true, mode: "grab" },
-        resize: true
-      },
-      modes: {
-        grab: { distance: 140, links: { opacity: 0.3 } }
-      }
-    },
-    retina_detect: true,
-    background: {
-      color: "transparent"
-    }
+    interactivity: { events: { onHover: { enable: true, mode: "grab" }, resize: true }, modes: { grab: { distance: 140, links: { opacity: 0.3 } } } },
+    retina_detect: true, background: { color: "transparent" }
   });
-
-  // Theme listener to adjust particle colors slightly
-  const observer = new MutationObserver(() => {
-    const pInst = tsParticles.domItem(0);
-    if (pInst) {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      pInst.options.particles.color.value = isDark ? "#c8a96e" : "#1e3050";
-      pInst.options.particles.links.color = isDark ? "#c8a96e" : "#1e3050";
-      pInst.options.particles.opacity.value = isDark ? 0.3 : 0.15;
-      pInst.options.particles.links.opacity = isDark ? 0.15 : 0.08;
-      pInst.refresh();
-    }
-  });
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 }
 
 /* =============================
@@ -447,35 +517,34 @@ if (typeof tsParticles !== 'undefined') {
    ============================= */
 const aboutReadMoreBtn = document.getElementById('about-read-more');
 const aboutExtra = document.getElementById('about-extra');
-
 if (aboutReadMoreBtn && aboutExtra) {
   aboutReadMoreBtn.addEventListener('click', () => {
     const isHidden = aboutExtra.style.display === 'none';
-    const currentLang = document.documentElement.getAttribute('data-lang') || 'en';
+    const lang = html.getAttribute('data-lang') || 'en';
     const btnSpan = aboutReadMoreBtn.querySelector('span');
-
     if (isHidden) {
       aboutExtra.style.display = 'block';
       if (btnSpan) {
         btnSpan.setAttribute('data-en', 'Show Less');
         btnSpan.setAttribute('data-ms', 'Tutup');
-        btnSpan.textContent = currentLang === 'en' ? 'Show Less' : 'Tutup';
+        btnSpan.textContent = lang === 'en' ? 'Show Less' : 'Tutup';
       }
     } else {
       aboutExtra.style.display = 'none';
       if (btnSpan) {
         btnSpan.setAttribute('data-en', 'Read More');
         btnSpan.setAttribute('data-ms', 'Baca Lanjut');
-        btnSpan.textContent = currentLang === 'en' ? 'Read More' : 'Baca Lanjut';
+        btnSpan.textContent = lang === 'en' ? 'Read More' : 'Baca Lanjut';
       }
-
-      // Optionally scroll back to the top of the about section if it's long
-      const aboutSection = document.getElementById('about');
-      if (aboutSection) {
-        const offset = 80;
-        const top = aboutSection.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
+      window.scrollTo({ top: document.getElementById('about').offsetTop - 80, behavior: 'smooth' });
     }
   });
 }
+
+/* =============================
+   INITIALIZE
+   ============================= */
+document.addEventListener('DOMContentLoaded', () => {
+  renderPortfolio();
+  updateScrollSpy();
+});

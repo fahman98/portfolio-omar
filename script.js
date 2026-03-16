@@ -330,17 +330,22 @@ slideEls.forEach((el, i) => {
 /* =============================
    IMPACT COUNTER ANIMATION
    ============================= */
-function animateCounter(el, target, duration = 1200) {
-  let start = 0;
-  const step = target / (duration / 16);
-  const timer = setInterval(() => {
-    start += step;
-    if (start >= target) {
-      start = target;
-      clearInterval(timer);
+function animateCounter(el, target, duration = 1500) {
+  let startTime = null;
+  const startValue = 0;
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const currentValue = Math.floor(progress * (target - startValue) + startValue);
+    el.textContent = currentValue;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      el.textContent = target; // Ensure it ends exactly at target
     }
-    el.textContent = Math.floor(start);
-  }, 16);
+  }
+  window.requestAnimationFrame(step);
 }
 
 const impactSection = document.getElementById('impact');
@@ -350,15 +355,15 @@ if (impactSection) {
     entries.forEach(entry => {
       if (entry.isIntersecting && !counted) {
         counted = true;
-        document.querySelectorAll('.impact-num[data-target]').forEach(el => {
-          animateCounter(el, parseInt(el.getAttribute('data-target')));
-        });
-        document.querySelectorAll('.split-num[data-target]').forEach(el => {
-          animateCounter(el, parseInt(el.getAttribute('data-target')));
-        });
+        // Small delay to ensure fade-up animation has started
+        setTimeout(() => {
+          document.querySelectorAll('.impact-num[data-target], .split-num[data-target]').forEach(el => {
+            animateCounter(el, parseInt(el.getAttribute('data-target')));
+          });
+        }, 200);
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.2 }); // Lower threshold for better mobile triggering
   impactObserver.observe(impactSection);
 }
 

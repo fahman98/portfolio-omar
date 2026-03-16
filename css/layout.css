@@ -258,6 +258,7 @@
     radial-gradient(ellipse at 70% 50%, rgba(200, 169, 110, 0.4) 0%, transparent 60%),
     radial-gradient(ellipse at 20% 80%, rgba(15, 28, 46, 0.6) 0%, transparent 50%),
     linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)),
+    url('../bg-sports.webp'),
     url('../bg-sports.jpg');
   background-size: cover, cover, cover, cover;
   background-position: center, center, center, center;
@@ -270,6 +271,7 @@
     radial-gradient(ellipse at 70% 50%, rgba(200, 169, 110, 0.3) 0%, transparent 60%),
     radial-gradient(ellipse at 20% 20%, rgba(30, 48, 80, 0.6) 0%, transparent 50%),
     linear-gradient(rgba(15, 28, 46, 0.85), rgba(15, 28, 46, 0.95)),
+    url('../bg-sports.webp'),
     url('../bg-sports.jpg');
   background-blend-mode: normal, normal, overlay, normal;
 }

@@ -64,6 +64,14 @@
   <link rel="stylesheet" href="css/layout.css?v=2" />
   <link rel="stylesheet" href="css/components.css?v=2" />
   <link rel="stylesheet" href="css/responsive.css?v=1" />
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      const lang = localStorage.getItem('lang') || 'en';
+      document.documentElement.setAttribute('data-lang', lang);
+    })();
+  </script>
 </head>
 
 <body>
@@ -177,7 +185,7 @@
       </div>
       <div class="hero-photo-wrapper">
         <picture>
-          <img loading="lazy" src="hero-full.png"
+          <img src="hero-full.png" fetchpriority="high" decoding="async"
             alt="Potret Rasmi Dr. Omar Firdaus, Pengarah Pusat Alumni Keseluruhan UPSI" class="hero-photo-full"
             id="profile-img" />
         </picture>

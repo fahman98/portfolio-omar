@@ -75,8 +75,18 @@
   color: var(--gold-dark);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
+}
+
+.nav-links a.active {
+  color: var(--gold);
+}
+
+.nav-more-btn.active {
+  color: var(--gold);
+  border-color: var(--gold);
 }
 
 .nav-actions {

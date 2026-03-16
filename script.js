@@ -380,55 +380,70 @@ backToTopBtn.addEventListener('click', () => {
 });
 
 /* =============================
-   SCROLL-SPY NAV HIGHLIGHT
+   SCROLL-SPY NAV HIGHLIGHT (IntersectionObserver)
    ============================= */
 const dropdownSections = ['consultation', 'publication', 'supervision', 'commercialisation', 'copyright', 'awards', 'contributions', 'contact'];
-const allSpySections = ['about', 'expertise', 'roles', 'qualification', 'research', ...dropdownSections];
+const mainSections = ['about', 'expertise', 'roles', 'qualification', 'research'];
+const allSpySections = ['hero', ...mainSections, ...dropdownSections];
 
-function updateScrollSpy() {
-  const scrollY = window.scrollY + 120;
-  let activeId = null;
+function initScrollSpy() {
+  const options = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px', // Trigger when section is in the top-middle area
+    threshold: 0
+  };
 
-  for (const id of allSpySections) {
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        updateActiveState(id);
+      }
+    });
+  }, options);
+
+  allSpySections.forEach(id => {
     const el = document.getElementById(id);
-    if (el && el.offsetTop <= scrollY) {
-      activeId = id;
-    }
-  }
+    if (el) spyObserver.observe(el);
+  });
+}
 
-  const isDropdown = dropdownSections.includes(activeId);
-
+function updateActiveState(activeId) {
+  // 1. Desktop Nav
   document.querySelectorAll('.nav-links > li > a').forEach(link => {
     const href = link.getAttribute('href')?.replace('#', '');
     if (href === activeId) link.classList.add('active');
     else link.classList.remove('active');
   });
 
+  // 2. Dropdown Button
   if (navMoreBtn) {
-    if (isDropdown) navMoreBtn.classList.add('active');
+    if (dropdownSections.includes(activeId)) navMoreBtn.classList.add('active');
     else navMoreBtn.classList.remove('active');
   }
 
+  // 3. Mobile Menu Links
   document.querySelectorAll('.mobile-menu a').forEach(link => {
     const href = link.getAttribute('href')?.replace('#', '');
     if (href === activeId) link.classList.add('active');
     else link.classList.remove('active');
   });
 
+  // 4. Mobile Bottom Tab Bar
   document.querySelectorAll('.mobile-tab-bar .tab-item').forEach(link => {
     const href = link.getAttribute('href')?.replace('#', '');
     let isActive = false;
-    if (href === 'hero' && (!activeId || activeId === 'hero' || activeId === 'about')) isActive = true;
+    
+    // Group sections for mobile tabs
+    if (href === 'hero' && (activeId === 'hero' || activeId === 'about')) isActive = true;
     if (href === 'expertise' && (activeId === 'expertise' || activeId === 'impact' || activeId === 'roles')) isActive = true;
-    if (href === 'research' && (activeId === 'research' || activeId === 'publication' || activeId === 'supervision' || activeId === 'qualification' || activeId === 'awards')) isActive = true;
+    if (href === 'research' && (activeId === 'research' || activeId === 'publication' || activeId === 'supervision' || activeId === 'qualification' || activeId === 'awards' || activeId === 'commercialisation' || activeId === 'copyright')) isActive = true;
     if (href === 'contact' && activeId === 'contact') isActive = true;
 
     if (isActive) link.classList.add('active');
     else link.classList.remove('active');
   });
 }
-
-window.addEventListener('scroll', updateScrollSpy, { passive: true });
 
 /* =============================
    EXPERTISE PROGRESS BAR ANIMATION
@@ -546,5 +561,5 @@ if (aboutReadMoreBtn && aboutExtra) {
    ============================= */
 document.addEventListener('DOMContentLoaded', () => {
   renderPortfolio();
-  updateScrollSpy();
+  initScrollSpy();
 });

@@ -718,12 +718,34 @@ section:nth-child(even) {
   transition: all var(--transition);
 }
 
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+  background: var(--navy-mid);
+  border-color: var(--navy-light);
+  color: var(--white);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   background: var(--bg-primary);
   border-color: var(--gold);
   box-shadow: 0 0 0 4px rgba(200, 169, 110, 0.15);
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group textarea:focus {
+  background: var(--navy-light);
 }
 
 /* =============================

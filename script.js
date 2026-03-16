@@ -563,4 +563,16 @@ document.addEventListener('DOMContentLoaded', () => {
   renderPortfolio();
   initScrollSpy();
 });
-$js
+
+/* =============================
+   READING PROGRESS BAR LOGIC
+   ============================= */
+window.addEventListener('scroll', () => {
+  const progressBar = document.getElementById('reading-progress');
+  if (progressBar) {
+    const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (windowScroll / height) * 100;
+    progressBar.style.width = scrolled + '%';
+  }
+}, { passive: true });

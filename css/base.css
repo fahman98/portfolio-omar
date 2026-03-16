@@ -424,23 +424,23 @@ footer {
    ACADEMIC IMPACT SECTION
    ============================= */
 #impact {
-  background: var(--navy);
+  background-color: var(--navy) !important;
 }
 
 [data-theme="dark"] #impact {
-  background: linear-gradient(135deg, var(--navy) 0%, #1a2744 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, #1a2744 100%) !important;
 }
 
 #impact .section-tag {
-  color: var(--gold-light);
+  color: var(--gold-light) !important;
 }
 
 #impact .section-header h2 {
-  color: var(--white);
+  color: var(--white) !important;
 }
 
 #impact .divider {
-  background: linear-gradient(to right, var(--gold-light), var(--gold));
+  background: linear-gradient(to right, var(--gold-light), var(--gold)) !important;
 }
 
 .impact-grid {
@@ -451,8 +451,8 @@ footer {
 }
 
 .impact-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(200, 169, 110, 0.25);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(200, 169, 110, 0.3) !important;
   border-radius: var(--radius-lg);
   padding: 2rem 1.5rem;
   text-align: center;
@@ -466,24 +466,24 @@ footer {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(200, 169, 110, 0.07), transparent);
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.1), transparent);
   pointer-events: none;
 }
 
 .impact-card:hover {
-  border-color: var(--gold);
-  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--gold) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
   transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 12px 36px rgba(200, 169, 110, 0.15);
+  box-shadow: 0 12px 36px rgba(200, 169, 110, 0.2);
 }
 
 .impact-card--highlight {
-  background: linear-gradient(135deg, rgba(200, 169, 110, 0.2), rgba(200, 169, 110, 0.08));
-  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.3), rgba(200, 169, 110, 0.1)) !important;
+  border-color: var(--gold) !important;
 }
 
 .impact-card--highlight:hover {
-  background: linear-gradient(135deg, rgba(200, 169, 110, 0.3), rgba(200, 169, 110, 0.12));
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.4), rgba(200, 169, 110, 0.2)) !important;
 }
 
 .impact-icon {
@@ -494,14 +494,16 @@ footer {
 .impact-icon svg {
   width: 40px;
   height: 40px;
-  stroke: var(--gold-light);
+  stroke: var(--gold-light) !important;
 }
 
-.impact-num {
+.impact-num,
+.split-num,
+.impact-big-val {
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   font-weight: 700;
-  color: var(--gold-light);
+  color: var(--gold-light) !important;
   line-height: 1;
   margin-bottom: 0.5rem;
 }
@@ -515,27 +517,14 @@ footer {
 }
 
 .split-num {
-  font-family: 'Playfair Display', serif;
   font-size: 2.8rem;
-  font-weight: 700;
-  color: var(--gold-light);
-  line-height: 1;
 }
 
 .split-divider {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  color: var(--gold);
-  opacity: 0.7;
-}
-
-.impact-big-val {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--gold-light);
-  line-height: 1;
-  margin-bottom: 0.5rem;
+  color: var(--gold) !important;
+  opacity: 0.8;
 }
 
 .impact-label {
@@ -543,13 +532,15 @@ footer {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--white) !important;
+  opacity: 0.95;
   margin-bottom: 0.35rem;
 }
 
 .impact-sub {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--white) !important;
+  opacity: 0.7;
   line-height: 1.4;
 }
 

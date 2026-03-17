@@ -366,7 +366,7 @@ const portfolioData = {
     { title: "MEJAR BERSEKUTU (APNM)", event: "Angkatan Pertahanan Awam Malaysia", year: "2025-2027" }
   ],
   contributions: [
-    { title: "YDP Persatuan Ibu Bapa dan Pendidikan", event: "NCDRC", year: "2026 - 2027" },
+    { title: "YDP Persatuan Ibu Bapa dan Pendidik", event: "NCDRC", year: "2026 - 2027" },
     { title: "Penasihat Majlis Anak Selangor", event: "BHEP / SUK SELANGOR", year: "2024 - 2027" },
     { title: "Pengarah Pusat Alumni", event: "UPSI", year: "2024 - 2027" },
     { title: "Penasihat Faculty Responsive Team (FRT)", event: "FSSKJ", year: "2022 - 2027" },

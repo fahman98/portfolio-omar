@@ -20,6 +20,16 @@ function renderPortfolio() {
     `).join('');
   }
 
+  // Render Partners
+  const logoCloud = document.getElementById('logo-cloud');
+  if (logoCloud && portfolioData.partners) {
+    logoCloud.innerHTML = portfolioData.partners.map(partner => `
+      <div class="logo-item fade-up" title="${partner.name}">
+        <img src="${partner.logo}" alt="${partner.alt}" loading="lazy">
+      </div>
+    `).join('');
+  }
+
   // Render Publications
   const pubList = document.querySelector('.pub-list-items');
   if (pubList) {

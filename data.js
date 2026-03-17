@@ -1,12 +1,4 @@
 const portfolioData = {
-  partners: [
-    { name: "Universiti Pendidikan Sultan Idris", logo: "https://www.upsi.edu.my/wp-content/uploads/2021/01/logo-upsi-2021.png", alt: "UPSI Logo" },
-    { name: "Northern Corridor Implementation Authority", logo: "https://www.ncer.com.my/wp-content/uploads/2020/03/NCIA-Logo.png", alt: "NCIA Logo" },
-    { name: "Yayasan Hasanah", logo: "https://yayasanhasanah.org.my/wp-content/uploads/2020/05/logo-hasanah.png", alt: "Yayasan Hasanah Logo" },
-    { name: "Kementerian Pendidikan Tinggi", logo: "https://www.mohe.gov.my/templates/g5_helium/custom/images/logo-mohe.png", alt: "KPT Logo" },
-    { name: "Kementerian Kewangan Malaysia", logo: "https://www.mof.gov.my/images/logo-mof-2023.png", alt: "MOF Logo" },
-    { name: "Universiti Malaysia Terengganu", logo: "https://www.umt.edu.my/wp-content/uploads/2019/12/logo-umt.png", alt: "UMT Logo" }
-  ],
   research: [
     {
       year: "2023",

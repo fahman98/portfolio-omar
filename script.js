@@ -580,6 +580,16 @@ function initMapInteractions() {
   const statusLabelEl = document.getElementById('map-status-label');
   const countryDescEl = document.getElementById('map-country-desc');
   
+  const overviewData = {
+    name: { en: "Global Overview", ms: "Ringkasan Global" },
+    phd: 14,
+    status: "Global",
+    desc: {
+      en: "Dr. Omar's academic leadership extends across borders, mentoring researchers from Malaysia, China, and the Middle East.",
+      ms: "Kepimpinan akademik Dr. Omar menjangkau sempadan, membimbing penyelidik dari Malaysia, China, dan Timur Tengah."
+    }
+  };
+
   const countryData = {
     "Malaysia": {
       phd: 8,
@@ -598,13 +608,21 @@ function initMapInteractions() {
     }
   };
 
+  const resetToOverview = () => {
+    const lang = document.documentElement.getAttribute('data-lang') || 'en';
+    markers.forEach(m => m.classList.remove('active'));
+    countryNameEl.textContent = overviewData.name[lang];
+    phdCountEl.textContent = overviewData.phd;
+    statusLabelEl.textContent = overviewData.status;
+    countryDescEl.textContent = overviewData.desc[lang];
+  };
+
   markers.forEach(marker => {
     marker.addEventListener('mouseenter', () => {
       const country = marker.getAttribute('data-country');
       const data = countryData[country];
       const lang = document.documentElement.getAttribute('data-lang') || 'en';
       
-      // Update UI
       markers.forEach(m => m.classList.remove('active'));
       marker.classList.add('active');
       
@@ -613,14 +631,16 @@ function initMapInteractions() {
       statusLabelEl.textContent = data.status;
       countryDescEl.textContent = data.desc;
       
-      // Apply language if needed
       if (lang === 'ms') {
-        if (country === 'China') countryNameEl.textContent = 'China';
-        if (country === 'Oman') countryNameEl.textContent = 'Oman';
-        statusLabelEl.textContent = data.status.replace('Active', 'Aktif').replace('Completed', 'Selesai');
+        statusLabelEl.textContent = data.status.replace('Active', 'Aktif').replace('Completed', 'Selesai').replace('Supervision', 'Penyeliaan');
       }
     });
   });
+
+  const mapWrapper = document.querySelector('.map-wrapper');
+  if (mapWrapper) {
+    mapWrapper.addEventListener('mouseleave', resetToOverview);
+  }
 }
 
 /* =============================

@@ -1003,6 +1003,68 @@
     </div>
   </section>
 
+  <!-- GLOBAL ACADEMIC IMPACT -->
+  <section id="global-impact" style="background-color: var(--navy); color: white; padding: 5rem 0; position: relative; overflow: hidden;">
+    <div id="map-particles"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="International Presence" data-ms="Kehadiran Antarabangsa" style="color: var(--gold-light);">International Presence</span>
+        <h2 data-en="Global Academic Impact" data-ms="Impak Akademik Global" style="color: white;">Global Academic Impact</h2>
+        <div class="divider" style="background: var(--gold);"></div>
+      </div>
+      
+      <div class="map-container fade-up">
+        <div class="map-wrapper">
+          <svg viewBox="0 0 1000 500" class="world-map">
+            <!-- Simplified World Map Path -->
+            <path class="land" d="M250,150 L280,140 L300,160 L320,150 L350,170 L340,200 L300,220 L270,210 L250,190 Z M450,100 L500,80 L550,100 L580,150 L550,250 L500,280 L450,250 L420,180 Z M650,150 L750,120 L850,150 L900,250 L850,350 L750,380 L650,350 L600,250 Z" opacity="0.1" fill="currentColor"></path>
+            
+            <!-- MALAYSIA -->
+            <g class="map-marker" data-country="Malaysia" transform="translate(735, 305)">
+              <circle r="12" class="marker-pulse"></circle>
+              <circle r="6" class="marker-dot"></circle>
+            </g>
+            
+            <!-- CHINA -->
+            <g class="map-marker" data-country="China" transform="translate(750, 190)">
+              <circle r="12" class="marker-pulse"></circle>
+              <circle r="6" class="marker-dot"></circle>
+            </g>
+            
+            <!-- OMAN -->
+            <g class="map-marker" data-country="Oman" transform="translate(615, 235)">
+              <circle r="12" class="marker-pulse"></circle>
+              <circle r="6" class="marker-dot"></circle>
+            </g>
+
+            <!-- CONNECTIONS (Dashed Lines) -->
+            <path class="map-link" d="M735,305 Q675,270 615,235" stroke="var(--gold)" stroke-dasharray="5,5" fill="none" opacity="0.3"></path>
+            <path class="map-link" d="M735,305 Q742,247 750,190" stroke="var(--gold)" stroke-dasharray="5,5" fill="none" opacity="0.3"></path>
+          </svg>
+        </div>
+        
+        <div class="map-stats-overlay">
+          <div class="country-info-card" id="country-info-card">
+            <h3 id="map-country-name" data-en="Select a Country" data-ms="Pilih Negara">Select a Country</h3>
+            <div class="country-stat-grid">
+              <div class="c-stat">
+                <span class="c-stat-num" id="map-phd-count">0</span>
+                <span class="c-stat-label" data-en="PhD Supervisees" data-ms="Pelajar PhD">PhD Supervisees</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-stat-num" id="map-status-label">-</span>
+                <span class="c-stat-label" data-en="Current Status" data-ms="Status Terkini">Current Status</span>
+              </div>
+            </div>
+            <p id="map-country-desc" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.75rem;">
+              Hover over the markers to see the impact of Dr. Omar's academic supervision globally.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- COMMERCIALISATION -->
   <section id="commercialisation">
     <div class="container">

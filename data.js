@@ -1,4 +1,12 @@
 const portfolioData = {
+  partners: [
+    { name: "Universiti Pendidikan Sultan Idris", logo: "https://www.upsi.edu.my/wp-content/uploads/2021/01/logo-upsi-2021.png", alt: "UPSI Logo" },
+    { name: "Northern Corridor Implementation Authority", logo: "https://www.ncer.com.my/wp-content/uploads/2020/03/NCIA-Logo.png", alt: "NCIA Logo" },
+    { name: "Yayasan Hasanah", logo: "https://yayasanhasanah.org.my/wp-content/uploads/2020/05/logo-hasanah.png", alt: "Yayasan Hasanah Logo" },
+    { name: "Kementerian Pendidikan Tinggi", logo: "https://www.mohe.gov.my/templates/g5_helium/custom/images/logo-mohe.png", alt: "KPT Logo" },
+    { name: "Kementerian Kewangan Malaysia", logo: "https://www.mof.gov.my/images/logo-mof-2023.png", alt: "MOF Logo" },
+    { name: "Universiti Malaysia Terengganu", logo: "https://www.umt.edu.my/wp-content/uploads/2019/12/logo-umt.png", alt: "UMT Logo" }
+  ],
   research: [
     {
       year: "2023",
@@ -244,28 +252,32 @@ const portfolioData = {
       year: "2026",
       thesis: "Developing A Comprehensive Sustainability Model For Omani Sports Federations: A Mixed Methodology Approach",
       tags: ["PhD", "International", "Completed"],
-      role: "Supervisor"
+      role: "Supervisor",
+      country: "Oman"
     },
     {
       name: "Issam Nasser Khalfan Alsiyabi",
       year: "2025",
       thesis: "Development Model Of Fan Engagement On Social Media Towards Motivations, Activities, And The Impact On Brand Loyalty And Brand Attachment In Oman Sport Clubs",
       tags: ["PhD", "International", "Completed"],
-      role: "Supervisor"
+      role: "Supervisor",
+      country: "Oman"
     },
     {
       name: "Lui Xuexin",
       year: "2025",
       thesis: "The Development Of The Sports Tourism Behavioral Intention Model In Guizhou China",
       tags: ["PhD", "International", "Completed"],
-      role: "Co-Supervisor"
+      role: "Co-Supervisor",
+      country: "China"
     },
     {
       name: "Fakrul Hazely Bin Ismail",
       year: "2025",
       thesis: "The Development Of Malaysia Football Coaching Education Quality Framework",
       tags: ["PhD", "National", "Completed"],
-      role: "Co-Supervisor"
+      role: "Co-Supervisor",
+      country: "Malaysia"
     },
     {
       name: "Zhao Peng",
@@ -273,7 +285,8 @@ const portfolioData = {
       thesis: "Development Of Competency Model For Basketball Coaches In Hubei Province Of China",
       tags: ["PhD", "International", "Finding Defense"],
       role: "Supervisor",
-      active: true
+      active: true,
+      country: "China"
     },
     {
       name: "Mohd Rizal Bin Mohtar",
@@ -281,7 +294,8 @@ const portfolioData = {
       thesis: "Pembangunan Dan Penilaian Modul Permainan Kemas Terhadap Perlaksanaan Perkembangan Kemahiran Motor Untuk Guru Pendidikan Prasekolah",
       tags: ["PhD", "National", "Finding Defense"],
       role: "Supervisor",
-      active: true
+      active: true,
+      country: "Malaysia"
     },
     {
       name: "Liu Kaining",
@@ -289,7 +303,8 @@ const portfolioData = {
       thesis: "Model Construction For Humanistic Quality Physical Education Path For Sichuan Province University, China",
       tags: ["PhD", "International", "Finding Defense"],
       role: "Co-Supervisor",
-      active: true
+      active: true,
+      country: "China"
     },
     {
       name: "Xiao Menglong",
@@ -297,7 +312,8 @@ const portfolioData = {
       thesis: "Leisure Physical Activity Preferences And Constraints Of The Elderly In Guangzhou, China",
       tags: ["PhD", "International", "Finding Defense"],
       role: "Co-Supervisor",
-      active: true
+      active: true,
+      country: "China"
     },
     {
       name: "Ainnurnizam Ashan Bin Abdul Shukor",
@@ -305,7 +321,8 @@ const portfolioData = {
       thesis: "Pembangunan Model Kepimpinan Distributif Penolong Kanan Kokurikulum Sekolah Rendah Di Negeri Perak",
       tags: ["PhD", "National", "Presentation"],
       role: "Supervisor",
-      active: true
+      active: true,
+      country: "Malaysia"
     },
     {
       name: "Siti Zubaidah Nur Bt Marthuan @ Che Wan",
@@ -313,7 +330,8 @@ const portfolioData = {
       thesis: "Pembangunan Model Kepuasan Pelancong Terhadap Pelancongan Berasaskan Aktiviti Cabaran / Kembaran (i-KPP) Di Perak",
       tags: ["PhD", "National", "Presentation"],
       role: "Supervisor",
-      active: true
+      active: true,
+      country: "Malaysia"
     },
     {
       name: "Nor Aziela Binti Mohd Ramli",
@@ -321,7 +339,8 @@ const portfolioData = {
       thesis: "Pembinaan Instrumen Penilaian Kendiri Kompetensi Guru Opsyen Dan Bukan Opsyen Pendidikan Jasmani Di Malaysia",
       tags: ["PhD", "National", "Presentation"],
       role: "Supervisor",
-      active: true
+      active: true,
+      country: "Malaysia"
     },
     {
       name: "Nazrul Fadzli Bin Khairulhalimi",
@@ -329,7 +348,8 @@ const portfolioData = {
       thesis: "Pembentukan Model Proses Kejurulatihan Bagi Bola Sepak Akar Umbi Lembah Klang",
       tags: ["PhD", "National", "Presentation"],
       role: "Co-Supervisor",
-      active: true
+      active: true,
+      country: "Malaysia"
     },
     {
       name: "Andy Razeydan Bin Sahibu",
@@ -337,7 +357,8 @@ const portfolioData = {
       thesis: "Impak Modul Pembinaan Pasukan Terhadap Pembentukan Sahsiah Dalam Kalangan Murid Sekolah Menengah Di Lahad Datu Sabah",
       tags: ["Master's", "National", "Presentation"],
       role: "Supervisor",
-      active: true
+      active: true,
+      country: "Malaysia"
     },
     {
       name: "Wan Noor Nadhilah Binti Id Azalan Shah",
@@ -345,7 +366,8 @@ const portfolioData = {
       thesis: "Psychological Factors Of Risk Assessment On Decision Making Among Malaysian Skydivers",
       tags: ["Master's", "National", "Presentation"],
       role: "Co-Supervisor",
-      active: true
+      active: true,
+      country: "Malaysia"
     }
   ],
   commercialisation: [

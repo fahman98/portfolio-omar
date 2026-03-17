@@ -567,7 +567,61 @@ if (aboutReadMoreBtn && aboutExtra) {
 document.addEventListener('DOMContentLoaded', () => {
   renderPortfolio();
   initScrollSpy();
+  initMapInteractions();
 });
+
+/* =============================
+   MAP INTERACTIONS
+   ============================= */
+function initMapInteractions() {
+  const markers = document.querySelectorAll('.map-marker');
+  const countryNameEl = document.getElementById('map-country-name');
+  const phdCountEl = document.getElementById('map-phd-count');
+  const statusLabelEl = document.getElementById('map-status-label');
+  const countryDescEl = document.getElementById('map-country-desc');
+  
+  const countryData = {
+    "Malaysia": {
+      phd: 8,
+      status: "Active / Completed",
+      desc: "Dr. Omar's primary base where he leads multiple national-level research grants and supervises local PhD candidates."
+    },
+    "China": {
+      phd: 4,
+      status: "Supervision",
+      desc: "Supervising PhD candidates from various provinces in China including Guizhou, Hubei, Sichuan, and Guangzhou."
+    },
+    "Oman": {
+      phd: 2,
+      status: "Completed",
+      desc: "Successfully graduated international PhD students focusing on sustainability models for sports federations in Oman."
+    }
+  };
+
+  markers.forEach(marker => {
+    marker.addEventListener('mouseenter', () => {
+      const country = marker.getAttribute('data-country');
+      const data = countryData[country];
+      const lang = document.documentElement.getAttribute('data-lang') || 'en';
+      
+      // Update UI
+      markers.forEach(m => m.classList.remove('active'));
+      marker.classList.add('active');
+      
+      countryNameEl.textContent = country;
+      phdCountEl.textContent = data.phd;
+      statusLabelEl.textContent = data.status;
+      countryDescEl.textContent = data.desc;
+      
+      // Apply language if needed
+      if (lang === 'ms') {
+        if (country === 'China') countryNameEl.textContent = 'China';
+        if (country === 'Oman') countryNameEl.textContent = 'Oman';
+        statusLabelEl.textContent = data.status.replace('Active', 'Aktif').replace('Completed', 'Selesai');
+      }
+    });
+  });
+}
 
 /* =============================
    READING PROGRESS BAR LOGIC

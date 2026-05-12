@@ -20,6 +20,31 @@ function renderPortfolio() {
     `).join('');
   }
 
+  // Render Consultation Clients
+  const consultRow = document.querySelector('.consult-client-row');
+  if (consultRow) {
+    const icons = {
+      'building': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+      'star': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+      'graduation-cap': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
+      'target': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+      'home': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+      'leaf': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`
+    };
+    consultRow.innerHTML = portfolioData.consultation.map(client => `
+      <div class="consult-client-card">
+        <div class="cc-icon">${icons[client.icon] || icons['building']}</div>
+        <div class="cc-name">${client.name}</div>
+        <div class="cc-projects">${client.projects}</div>
+      </div>
+    `).join('');
+    consultRow.querySelectorAll('.consult-client-card').forEach((el, i) => {
+      el.classList.add('fade-up');
+      if (i % 3 === 1) el.classList.add('delay-1');
+      if (i % 3 === 2) el.classList.add('delay-2');
+    });
+  }
+
   // Render Publications
   const pubList = document.querySelector('.pub-list-items');
   if (pubList) {
@@ -567,6 +592,7 @@ if (aboutReadMoreBtn && aboutExtra) {
 document.addEventListener('DOMContentLoaded', () => {
   renderPortfolio();
   initScrollSpy();
+  document.querySelectorAll('.consult-client-card').forEach(el => observer.observe(el));
 });
 
 /* =============================

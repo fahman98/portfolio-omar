@@ -28,7 +28,7 @@ function renderPortfolio() {
       const titleStyle = pub.pdf ? 'style="color: var(--gold); text-decoration: underline;"' : '';
       return `
         <div class="pub-item" data-index="${pub.index}" ${onclickAttr}>
-          <span class="pub-badge pub-badge--${pub.badgeType}">${pub.badge}</span>
+          <span class="pub-badge pub-badge--${pub.badgeType}"${pub.badgeMs ? ` data-en="${pub.badge}" data-ms="${pub.badgeMs}"` : ''}>${pub.badge}</span>
           <div class="pub-item-body">
             <div class="pub-item-title" ${titleStyle}>${pub.title}</div>
             <div class="pub-item-journal">${pub.journal}</div>
@@ -116,7 +116,7 @@ function renderPortfolio() {
     contribGrid.innerHTML = portfolioData.contributions.map(item => `
       <div class="award-card fade-up">
         <div class="award-detail">
-          <div class="award-title">${item.title}</div>
+          <div class="award-title" data-en="${item.titleEn}" data-ms="${item.titleMs}">${item.titleEn}</div>
           <div class="award-event">${item.event}</div>
           <div class="award-meta"><span class="award-year">${item.year}</span></div>
         </div>

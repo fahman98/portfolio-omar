@@ -236,6 +236,48 @@ const portfolioData = {
       badge: "MyCITE",
       badgeType: "mycite",
       pdf: "publication_2025/kompetensi-amalan-kepimpinan.pdf"
+    },
+    {
+      index: "modul",
+      title: "Modul Interaktif Pendidikan Pencegahan Rasuah dan Penerapan Integriti (MODUL PERANTI)",
+      journal: "ACF Strategic & Consultant — 2021 — Penulis",
+      badge: "Module", badgeMs: "Modul",
+      badgeType: "modul"
+    },
+    {
+      index: "modul",
+      title: "Modul MAL-Unity",
+      journal: "UPSI — 2024 — Penulis Utama",
+      badge: "Module", badgeMs: "Modul",
+      badgeType: "modul"
+    },
+    {
+      index: "modul",
+      title: "Modul Integriti Profesional X-Factor",
+      journal: "Institut Integriti Malaysia (IIM) — 2025 — Penulis",
+      badge: "Module", badgeMs: "Modul",
+      badgeType: "modul"
+    },
+    {
+      index: "modul",
+      title: "Modul Akademi Pembangunan Belia Malaysia (APBM)",
+      journal: "Universiti Tun Hussein Onn Malaysia (UTHM) — 2025 — Penulis",
+      badge: "Module", badgeMs: "Modul",
+      badgeType: "modul"
+    },
+    {
+      index: "chapter",
+      title: "Modul Insan Guru Profesional – Sains Sukan & Pendidikan Jasmani",
+      journal: "Fakulti Pembangunan Manusia UPSI — 2023 — Penulis",
+      badge: "Chapter in Book", badgeMs: "Bab dalam Buku",
+      badgeType: "chapter"
+    },
+    {
+      index: "polisi",
+      title: "Prosedur Operasi Standard Khusus Aktiviti Rekreasi Luar Pelajar Institut Pendidikan Guru Kementerian Pendidikan Malaysia",
+      journal: "Institut Pendidikan Guru Malaysia (IPGM) — 2025 — Penulis",
+      badge: "Policy", badgeMs: "Polisi",
+      badgeType: "polisi"
     }
   ],
   supervision: [
@@ -366,12 +408,14 @@ const portfolioData = {
     { title: "MEJAR BERSEKUTU (APNM)", event: "Angkatan Pertahanan Awam Malaysia", year: "2025-2027" }
   ],
   contributions: [
-    { title: "YDP Persatuan Ibu Bapa dan Pendidik", event: "NCDRC", year: "2026 - 2027" },
-    { title: "Penasihat Majlis Anak Selangor", event: "BHEP / SUK SELANGOR", year: "2024 - 2027" },
-    { title: "Pengarah Pusat Alumni", event: "UPSI", year: "2024 - 2027" },
-    { title: "Penasihat Faculty Responsive Team (FRT)", event: "FSSKJ", year: "2022 - 2027" },
-    { title: "Penasihat Gabungan Anak Selangor & Kuala Lumpur", event: "BHEP", year: "2022 - 2023" },
-    { title: "Penasihat Persatuan Sains Sukan", event: "FSSKJ", year: "2021 - 2027" },
-    { title: "Koordinator RESQ UPSI", event: "UCTC", year: "2021 - 2023" }
+    { titleEn: "Parent-Teacher Association Chairperson", titleMs: "YDP Persatuan Ibu Bapa dan Pendidik", event: "NCDRC", year: "2026 - 2027" },
+    { titleEn: "Visiting Professor", titleMs: "Profesor Pelawat", event: "Hanjiang Normal University, China", year: "2025" },
+    { titleEn: "Advisor, Selangor Alumni Council", titleMs: "Penasihat Majlis Anak Selangor", event: "BHEP / SUK SELANGOR", year: "2024 - 2027" },
+    { titleEn: "Director, Alumni Centre", titleMs: "Pengarah Pusat Alumni", event: "UPSI", year: "2024 - 2027" },
+    { titleEn: "Visiting Lecturer", titleMs: "Pensyarah Pelawat", event: "Universitas Negeri Padang, Indonesia", year: "2024" },
+    { titleEn: "Advisor, Faculty Responsive Team (FRT)", titleMs: "Penasihat Faculty Responsive Team (FRT)", event: "FSSKJ", year: "2022 - 2027" },
+    { titleEn: "Advisor, Selangor & KL Alumni Coalition", titleMs: "Penasihat Gabungan Anak Selangor & Kuala Lumpur", event: "BHEP", year: "2022 - 2023" },
+    { titleEn: "Advisor, Sports Science Association", titleMs: "Penasihat Persatuan Sains Sukan", event: "FSSKJ", year: "2021 - 2027" },
+    { titleEn: "Coordinator, UPSI RESQ Team", titleMs: "Koordinator RESQ UPSI", event: "UCTC", year: "2021 - 2023" }
   ]
 };

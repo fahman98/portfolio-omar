@@ -710,6 +710,21 @@ footer {
   border: 1px solid var(--border);
 }
 
+.pub-badge--modul {
+  background: #7b4fa6;
+  color: #fff;
+}
+
+.pub-badge--chapter {
+  background: #d97706;
+  color: #fff;
+}
+
+.pub-badge--polisi {
+  background: #0369a1;
+  color: #fff;
+}
+
 .pub-item-body {
   flex: 1;
 }

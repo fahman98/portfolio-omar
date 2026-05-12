@@ -581,29 +581,26 @@ section:nth-child(even) {
    CONTACT SECTION LAYOUT & FORM
    ============================= */
 .contact-wrapper {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  align-items: center;
-  gap: 4rem;
-  max-width: 1000px;
+  display: block;
+  max-width: 860px;
   margin: 0 auto;
 }
 
 .contact-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 }
 
 .contact-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  box-shadow: none;
+  box-shadow: var(--shadow);
   transition: all var(--transition);
 }
 
